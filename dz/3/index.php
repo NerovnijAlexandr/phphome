@@ -14,9 +14,7 @@
         }
         return $retArr;
     }
-    echo '<pre>';
     var_dump(pluck($arrArr, 'name'));
-    echo '</pre>';
 
 
     /*
