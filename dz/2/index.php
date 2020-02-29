@@ -15,7 +15,7 @@
         }
         return $strRet;
     }
-    echo abbr('Донбасская государственная машиностроительная академия'), '<br>';
+    echo '<p style="color: blue;">', abbr('Донбасская государственная машиностроительная академия'), '</p>';
 
     /*
      * Напишите функцию truncate_string($str, $maxsymbol), которая
@@ -33,7 +33,7 @@
         }
         return $str;
     }
-    echo truncate_string('abcdefghijklmn', 6), '<br>';
+    echo '<p style="color: blue;">', truncate_string('abcdefghijklmn', 8), '</p>';
 
     /*
      * Необходимо написать функцию, которая считает в заданной строке
@@ -48,5 +48,55 @@
         }
         return $countLetter;
     }
-    echo getCountSymbol('телефон', 'е'), '<br>';
+    echo '<p style="color: blue;">', getCountSymbol('телефон', 'е'), '</p>';
+
+    /*
+     * Необходимо написать функцию, которая будет обрабатывать строку
+     * из формы, а именно функция должна выполнять следующее:
+     * -удалить концевые пробелы;
+     * -удалить все html теги
+     * -спец символы преобразовать в html сущности
+     * Функция должна вернуть обработанную строку.
+     * */
+    function prettyString(string $str):string
+    {
+        return htmlspecialchars(strip_tags(trim($str)));
+    }
+
+    /*
+     * Необходимо написать функцию, которая сокращает полное ФИО в
+     * краткое, например getShortFio ("Иванов Иван Ивановчи")//результат
+     * Иванов И.И.
+     * */
+    function getShortFio(string $fullFio):string
+    {
+        $shortFio = '';
+        foreach(explode(' ', $fullFio) as $key => $item) {
+            $shortFio .= ($key == 0) ? $item.' ' : mb_substr($item, 0, 1).'.';
+        }
+        return $shortFio;
+    }
+    echo '<p style="color: blue;">', getShortFio("Иванов Иван Ивановчи"), '</p>';
+
+    /*
+     * Необходимо в заданном имени файла выделить расширение файла
+     * (без точки)
+     * */
+    function getExp(string $filepath):string
+    {
+        return mb_substr($filepath, strrpos($filepath, '.') + 1);
+    }
+    echo '<p style="color: blue;">', getExp("C:/Windows/System32/drivers/etc/lmhosts.sam"), '</p>';
+?>
+
+<form action="" method="post">
+    <label for="str">Входная строка:</label>
+    <input type="text" name="str" id="str" placeholder="Введите строку">
+    <input type="submit" value="Отправить">
+</form>
+
+<?php
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        echo '<p style="color: blue;">', prettyString($_POST['str']), '</p>';
+    }
 ?>
