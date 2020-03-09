@@ -9,6 +9,11 @@
             type: 'POST',
             dataType: 'json',
             data: dataForm, // данные для отправки
+            success: (res) => {
+                if(res !== 'error') {
+                    location.href = '.';
+                }
+            }
         })
     }
 </script>

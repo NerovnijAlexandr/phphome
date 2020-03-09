@@ -30,7 +30,6 @@ if($_SERVER['REQUEST_METHOD'] == 'GET')
     }
 
     $formName = 'src/'.$formName;
-//    echo $action, '<br>';
     if(in_array($action, ['update', 'delete'])) {
         $book = $db->get_one(
             ['id' => $_GET['id']
