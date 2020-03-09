@@ -30,5 +30,5 @@ function managePost($post) {
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     managePost($_POST);
-    header('Refresh: 1; URL=.');
+//    header('Refresh: 1; URL=.'); //Refresh: 1;
 }

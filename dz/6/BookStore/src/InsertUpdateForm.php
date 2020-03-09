@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <form action="server.php" style="width: 100%" method="post" id="bookStoreForm" >
+        <form style="width: 100%" id="bookStoreForm" >
             <div class="form-group row">
                 <label for="name" class="col-md-2 col-form-label">Название</label>
                 <div class="col-md-10">
@@ -29,7 +29,8 @@
                 <div class="col-md-9">
                     <input type="hidden" name="id" value="<?=$id?>">
                     <input type="hidden" name="action" value="<?=$action?>">
-                    <button type="submit" class="btn btn-primary">Отправить</button>
+<!--                    <button type="submit" class="btn btn-primary" onsubmit="sendData(); return false;">Отправить</button>-->
+                    <a href="." class="btn btn-primary" onclick="sendData()">Отправить</a>
                 </div>
             </div>
         </form>

@@ -2,12 +2,13 @@
 
 namespace Academy;
 
-require_once ('../pdo/index.php');
+require_once ('../pdo/src/Database.php');
 
-//$db = new Database();
-//$db->table_name = 'books';
+$db = new Database();
+$db->table_name = 'books';
 
-if($_SERVER['REQUEST_METHOD'] == 'GET') {
+if($_SERVER['REQUEST_METHOD'] == 'GET')
+{
     $action = $_GET['action'] ?? '';
     switch ($action) {
         case 'update':
@@ -29,6 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 
     $formName = 'src/'.$formName;
+//    echo $action, '<br>';
     if(in_array($action, ['update', 'delete'])) {
         $book = $db->get_one(
             ['id' => $_GET['id']
@@ -67,6 +69,12 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
     ?>
 </div>
+<?php
+    if($action != '')
+    {
+        include_once ('src/script.php');
+    }
+?>
 
 </body>
 </html>
