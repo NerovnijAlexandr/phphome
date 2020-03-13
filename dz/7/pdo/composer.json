@@ -1,0 +1,9 @@
+{
+    "name": "pc/pdo",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Academy\\": "src/"
+        }
+    }
+}
